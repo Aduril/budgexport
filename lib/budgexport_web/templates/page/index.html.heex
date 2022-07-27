@@ -1,0 +1,35 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "Budgexport" %></h1>
+</section>
+
+<section class="row">
+  <article class="column">
+    <h2>Generate Budget Amounts</h2>
+    <table style="max-width: 30em;">
+      <tr>
+        <th phx-click="sortby" phx-value-sortby="active">Active</th>
+        <th phx-click="sortby" phx-value-sortby="name">Name</th>
+        <th style="text-align: right;" phx-click="sortby" phx-value-sortby="auto_amount">Per Month</th>
+      </tr>
+      <.form for={@changeset} let={f} phx-change="change_active" phx-submit="submit">
+        <fieldset>
+          <%= for %{ params: params } = f_budget <- inputs_for(f, :budgets) do %>
+
+            <tr>
+
+              <%= hidden_input f_budget, :firefly_id, value: params["firefly_id"] %>
+             <td> <%= checkbox f_budget, :is_active %></td>
+             <td> <%= params["name"]  %></td>
+             <td style="text-align: right;" > <%= :erlang.float_to_binary(params["auto_amount"], decimals: 2) %></td>
+            </tr>
+          <% end %>
+        </fieldset>
+      </.form>
+        <tr>
+          <td/>
+          <td><b>Total</b></td>
+          <td style="text-align: right;"><b><%= @budget_sum %></b></td>
+        </tr>
+    </table>
+  </article>
+</section>
