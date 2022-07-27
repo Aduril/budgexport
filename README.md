@@ -1,5 +1,5 @@
 # budgexport
-Tool to export firefly budget amounts
+Tool to export [firefly](https://docs.firefly-iii.org) budget amounts
 
 Somehow firefly doesn't have a view to see the monthly amount added to the budgets...
 But it has an API with these information. :)
