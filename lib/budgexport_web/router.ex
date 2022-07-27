@@ -18,6 +18,7 @@ defmodule BudgexportWeb.Router do
     pipe_through :browser
 
     live "/", BudgetLive
+    live "/thisisjustatestforme", BudgetLive
   end
 
   # Other scopes may use custom stacks.
