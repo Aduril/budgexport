@@ -4,7 +4,11 @@ defmodule BudgexportWeb.BudgetLive do
   alias Budgexport.Budgets.BudgetList
 
   def mount(_params, _session, socket) do
-    budgets = Budgexport.Budgets.get_budget_with_monthly_amount() |> create_changeset()
+    budgets =
+      :budgexport
+      |> Application.get_env(:env)
+      |> Budgexport.Budgets.get_budget_with_monthly_amount()
+      |> create_changeset()
 
     socket
     |> assign(:budget_sum, get_budget_sum(budgets))

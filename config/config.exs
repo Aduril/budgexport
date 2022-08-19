@@ -49,7 +49,8 @@ config :phoenix, :json_library, Jason
 
 config :budgexport,
   firefly_url: "https://firefly-example.com",
-  pat: "this_should_be_the_place_of_a_token"
+  pat: "this_should_be_the_place_of_a_token",
+  env: Mix.env()
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
